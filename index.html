@@ -68,6 +68,11 @@
     color:#1a1400;font-weight:700;box-shadow:0 10px 30px rgba(212,175,55,.35);
   }
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(212,175,55,.5)}
+  .btn .dg{
+    background:linear-gradient(90deg,#3a2a00,#1a1200 50%,#000);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    font-weight:800;letter-spacing:.01em;
+  }
   .btn-ghost{background:transparent;border-color:var(--line);color:var(--txt)}
   .btn-ghost:hover{border-color:var(--brand);color:#fff}
 
@@ -144,12 +149,18 @@
 
   /* Problem section */
   .problem{background:var(--bg-2)}
-  .pain-list{list-style:none;display:grid;gap:14px;max-width:720px;margin:0 auto}
-  .pain-list li{
-    background:var(--card);border:1px solid var(--line);border-left:3px solid #ff6b6b;
-    padding:16px 20px;border-radius:10px;color:#e6e1d6;font-size:16px;
+  .pain-chips{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;max-width:820px;margin:0 auto}
+  .pain-chips .chip{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--card);border:1px solid var(--line);
+    padding:13px 20px;border-radius:999px;color:#e6e1d6;
+    font-size:15px;font-weight:500;transition:transform .15s ease,border-color .15s ease;
   }
-  .pain-list li b{color:#fff}
+  .pain-chips .chip::before{
+    content:"";width:8px;height:8px;border-radius:50%;flex:none;
+    background:#d4af37;box-shadow:0 0 10px rgba(212,175,55,.6);
+  }
+  .pain-chips .chip:hover{transform:translateY(-2px);border-color:rgba(212,175,55,.5)}
 
   /* Process steps */
   .steps{counter-reset:step;display:grid;gap:22px;grid-template-columns:repeat(4,1fr)}
@@ -244,7 +255,7 @@
       <a href="#process">How it works</a>
       <a href="#results">Results</a>
       <a href="#faq">FAQ</a>
-      <a href="#book" class="btn btn-primary">Book a free call</a>
+      <a href="#book" class="btn btn-primary"><span class="dg">Book a free call</span></a>
     </nav>
   </div>
 </header>
@@ -287,13 +298,13 @@
       <h2>Your team is drowning in work software should be doing</h2>
       <p class="lead">Every hour spent copying data between tools, answering the same questions, and chasing approvals is an hour not spent serving customers or closing deals.</p>
     </div>
-    <ul class="pain-list">
-      <li><b>Staff buried in manual data entry</b> — moving information between your CRM, inbox, spreadsheets and billing tools by hand.</li>
-      <li><b>Customers waiting hours for answers</b> that an AI assistant could deliver instantly, day or night.</li>
-      <li><b>Knowledge trapped in people's heads</b> and scattered documents nobody can search.</li>
-      <li><b>Off-the-shelf tools that almost fit</b> — forcing your team to bend their workflow around the software instead of the other way around.</li>
-      <li><b>Growth that means hiring more people</b> instead of getting more leverage from the team you already have.</li>
-    </ul>
+    <div class="pain-chips">
+      <span class="chip">Manual data entry between tools</span>
+      <span class="chip">Customers left waiting for answers</span>
+      <span class="chip">Knowledge nobody can search</span>
+      <span class="chip">Software that won't fit your workflow</span>
+      <span class="chip">Growth that just means more hiring</span>
+    </div>
   </div>
 </section>
 
