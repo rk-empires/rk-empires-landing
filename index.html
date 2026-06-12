@@ -354,6 +354,58 @@
     .hero .eyebrow,.hero h1,.hero p.lead,.hero-cta,.hero-note{opacity:1;transform:none;animation:none}
     .gradient-text,.topline{animation:none}
   }
+
+  /* ============================================================
+     RESPONSIVE LAYOUT — tablet & mobile refinements
+     ============================================================ */
+
+  /* never allow accidental horizontal scroll */
+  html,body{max-width:100%}
+  img{max-width:100%}
+
+  /* Tablet and below */
+  @media(max-width:768px){
+    section{padding:64px 0}
+    .wrap{padding:0 20px}
+    .section-head{margin-bottom:40px}
+    .hero{padding:64px 0 56px}
+    .hero-glow{width:130vw;height:420px;top:-120px}
+    .nav-inner{height:60px}
+    .logo img{height:40px}
+    footer .logo img{height:48px}
+    .offer-card{padding:30px 22px}
+    .booking{padding:22px}
+    .quote{padding:24px}
+    .stat:not(:last-child)::after{display:none}
+    /* booking widget must never overflow narrow screens */
+    .calendly-inline-widget{min-width:0 !important;width:100%}
+  }
+
+  /* Phones */
+  @media(max-width:480px){
+    section{padding:52px 0}
+    .wrap{padding:0 16px}
+    .hero{padding:48px 0 44px}
+    .hero-note{font-size:13px}
+    /* full-width, easy-to-tap CTAs */
+    .hero-cta{flex-direction:column;align-items:stretch;gap:12px}
+    .hero-cta .btn{width:100%;justify-content:center}
+    .btn{padding:14px 20px;font-size:15px}
+    /* tighten the art-deco eyebrow rules so labels don't wrap awkwardly */
+    .eyebrow{gap:8px;font-size:12px}
+    .eyebrow::before,.eyebrow::after{width:16px}
+    /* trust bar reads better as a tidy 2-col grid on phones */
+    .trust-logos{gap:14px 24px}
+    .trust-logos span{font-size:16px}
+    .pain-chips{gap:10px}
+    .pain-chips .chip{font-size:14px;padding:11px 16px}
+    .stats{gap:28px 14px}
+    .offer-card{padding:26px 18px}
+    .offer-card .tag{font-size:12px}
+    /* stack footer items centered */
+    .foot-inner{flex-direction:column;text-align:center;gap:14px}
+    .calendly-inline-widget{height:760px !important}
+  }
 </style>
 </head>
 <body>
