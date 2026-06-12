@@ -242,9 +242,122 @@
   .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;color:var(--muted);font-size:14px}
   .foot-inner a{color:var(--muted)}
   .foot-inner a:hover{color:#fff}
+
+  /* ============================================================
+     DESIGN ELEVATION — refined art-deco luxury layer
+     ============================================================ */
+
+  /* Atmosphere: gold gradient mesh + vignette + film grain */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+    background:
+      radial-gradient(60vw 50vh at 12% -5%, rgba(212,175,55,.10), transparent 60%),
+      radial-gradient(50vw 45vh at 105% 8%, rgba(184,134,11,.08), transparent 55%),
+      radial-gradient(70vw 60vh at 50% 115%, rgba(212,175,55,.06), transparent 60%),
+      var(--bg);
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  ::selection{background:rgba(212,175,55,.3);color:#fff}
+  html{scrollbar-color:var(--brand-2) var(--bg)}
+  ::-webkit-scrollbar{width:11px}
+  ::-webkit-scrollbar-track{background:var(--bg)}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--brand),var(--brand-2));border-radius:6px;border:3px solid var(--bg)}
+
+  /* Thin animated gold accent bar pinned to the very top */
+  .topline{position:fixed;top:0;left:0;right:0;height:2px;z-index:60;
+    background:linear-gradient(90deg,transparent,var(--brand) 20%,var(--gold-lt) 50%,var(--brand) 80%,transparent);
+    background-size:200% 100%;animation:slide 6s linear infinite}
+  @keyframes slide{to{background-position:200% 0}}
+
+  /* Nav: deeper glass + gold hairline */
+  header.nav{background:rgba(7,7,7,.72);border-bottom:1px solid rgba(212,175,55,.18)}
+  header.nav::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(212,175,55,.5),transparent)}
+
+  /* Eyebrow → art-deco label with flanking gold rules */
+  .eyebrow{position:relative;display:inline-flex;align-items:center;gap:12px}
+  .eyebrow::before,.eyebrow::after{content:"";width:26px;height:1px;
+    background:linear-gradient(90deg,transparent,var(--brand))}
+  .eyebrow::after{background:linear-gradient(90deg,var(--brand),transparent)}
+  .section-head{position:relative}
+
+  /* Section heads get a centered art-deco diamond divider beneath the h2 */
+  .section-head h2::after{content:"";display:block;width:64px;height:0;margin:18px auto 0;
+    border-top:1px solid rgba(212,175,55,.5);position:relative}
+  .section-head h2{position:relative}
+
+  /* Hero: shimmering gold headline + staggered entrance */
+  .gradient-text{
+    background:linear-gradient(100deg,var(--brand-2),var(--gold-lt) 35%,#fff7df 50%,var(--gold-lt) 65%,var(--brand-2));
+    background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:shimmer 7s ease-in-out infinite}
+  @keyframes shimmer{0%,100%{background-position:0 0}50%{background-position:100% 0}}
+  .hero .eyebrow,.hero h1,.hero p.lead,.hero-cta,.hero-note{
+    opacity:0;transform:translateY(22px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+  .hero h1{animation-delay:.12s}
+  .hero p.lead{animation-delay:.24s}
+  .hero-cta{animation-delay:.36s}
+  .hero-note{animation-delay:.48s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  /* enlarge + frame the hero glow into a soft halo */
+  .hero-glow{width:1100px;height:620px;filter:blur(40px)}
+
+  /* Big stat numbers in the display serif for editorial weight */
+  .stat .num{font-family:"Playfair Display",Georgia,serif}
+  .stat{position:relative;padding:6px 0}
+  .stat:not(:last-child)::after{content:"";position:absolute;right:-12px;top:50%;transform:translateY(-50%);
+    width:1px;height:46px;background:linear-gradient(transparent,rgba(212,175,55,.35),transparent)}
+  @media(max-width:720px){.stat:not(:last-child)::after{display:none}}
+
+  /* Cards: gold top-edge reveal + art-deco corner + lift */
+  .card{position:relative;overflow:hidden}
+  .card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;transform:scaleX(0);transform-origin:left;
+    background:linear-gradient(90deg,var(--gold-lt),var(--brand-2));transition:transform .35s ease}
+  .card:hover::before{transform:scaleX(1)}
+  .card:hover{box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(212,175,55,.25)}
+  .card .ico{transition:transform .3s ease}
+  .card:hover .ico{transform:translateY(-2px) rotate(-4deg)}
+
+  /* Buttons: light sweep across the gold on hover */
+  .btn-primary{position:relative;overflow:hidden}
+  .btn-primary::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;
+    background:linear-gradient(105deg,transparent,rgba(255,255,255,.6),transparent);
+    transform:skewX(-18deg);transition:left .6s ease}
+  .btn-primary:hover::after{left:140%}
+
+  /* Process steps: connecting gold thread + glowing number */
+  .step{transition:transform .2s ease,border-color .2s ease}
+  .step:hover{transform:translateY(-4px);border-color:rgba(212,175,55,.4)}
+  .step .n{background:linear-gradient(135deg,rgba(212,175,55,.16),transparent);box-shadow:0 0 18px rgba(212,175,55,.15) inset}
+
+  /* Testimonials: oversized gold quote mark */
+  .quote{position:relative;overflow:hidden}
+  .quote::before{content:"\201C";position:absolute;top:-18px;right:14px;font-family:"Playfair Display",serif;
+    font-size:120px;line-height:1;color:rgba(212,175,55,.12)}
+  .quote:hover{border-color:rgba(212,175,55,.4)}
+
+  /* Offer card: animated gold ring glow */
+  .offer-card{position:relative}
+  .offer-card::before{content:"";position:absolute;inset:-1px;border-radius:22px;padding:1px;pointer-events:none;
+    background:linear-gradient(135deg,rgba(212,175,55,.6),transparent 40%,transparent 60%,rgba(212,175,55,.45));
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude}
+
+  /* Scroll-reveal — applied via JS to sections/cards */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .hero .eyebrow,.hero h1,.hero p.lead,.hero-cta,.hero-note{opacity:1;transform:none;animation:none}
+    .gradient-text,.topline{animation:none}
+  }
 </style>
 </head>
 <body>
+<div class="topline"></div>
 
 <!-- NAV -->
 <header class="nav">
@@ -516,6 +629,32 @@
     });
   });
 
+  // Scroll-reveal: stagger sections and their children into view
+  (function(){
+    var groups = document.querySelectorAll(
+      '.section-head, .grid, .stats, .steps, .pain-chips, .offer-card, .trust-logos, .cta-grid'
+    );
+    var targets = [];
+    groups.forEach(function(g){
+      // reveal direct children individually for a staggered cascade; else the group itself
+      var kids = g.children.length > 1 ? g.children : [g];
+      Array.prototype.forEach.call(kids, function(el, i){
+        el.classList.add('reveal');
+        el.style.setProperty('--d', (i % 6) * 0.08 + 's');
+        targets.push(el);
+      });
+    });
+    if(!('IntersectionObserver' in window)){
+      targets.forEach(function(t){ t.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+    targets.forEach(function(t){ io.observe(t); });
+  })();
 </script>
 <!-- Calendly widget script -->
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
